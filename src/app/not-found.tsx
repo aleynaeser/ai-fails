@@ -1,14 +1,15 @@
 'use client';
 
 import Error from 'next/error';
+import { ViewTransition } from 'react';
 
 export default function GlobalNotFound() {
   return (
     <html lang='en'>
-      <body>
-        <div className='text-primary flex h-full items-center justify-center py-28 text-center text-4xl'>
-          <Error statusCode={404} />;
-        </div>
+      <body className='font-anonymous-pro text-foreground flex items-center justify-center text-center'>
+        <ViewTransition enter='fade-in' exit='fade-out'>
+          <Error statusCode={404} />
+        </ViewTransition>
       </body>
     </html>
   );

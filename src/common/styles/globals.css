@@ -1,16 +1,11 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #060606;
+  --background: #000000;
   --foreground: #ffffff;
 
-  --primary: #0b2e22;
-  --primary-light: #0f3b2c;
-  --primary-lighter: #def1ec;
-  --primary-dark: #0b241a;
-
-  --secondary: #191919;
-
+  --primary: #fff;
+  --secondary: #000;
   --stroke: #272626;
 }
 
@@ -19,16 +14,10 @@
   --color-foreground: var(--foreground);
 
   --color-primary: var(--primary);
-  --color-primary-light: var(--primary-light);
-  --color-primary-lighter: var(--primary-lighter);
-  --color-primary-dark: var(--primary-dark);
-  --color-primary-darker: var(--primary-darker);
-
   --color-secondary: var(--secondary);
-
   --color-stroke: var(--stroke);
 
-  --font-inter: var(--font-inter);
+  --font-anonymous-pro: var(--font-anonymous-pro);
 }
 
 @layer base {
@@ -38,6 +27,22 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter antialiased;
+    @apply bg-background text-foreground font-anonymous-pro antialiased;
+  }
+
+  @keyframes dotOpacityPulse {
+    0% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.3;
+    }
+  }
+
+  .dot-opacity-pulse {
+    animation: dotOpacityPulse 2s ease-in-out infinite;
   }
 }

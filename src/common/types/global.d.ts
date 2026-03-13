@@ -1,4 +1,6 @@
 export declare global {
+  type TIconProps = React.SVGProps<SVGSVGElement>;
+
   interface ILocaleLayout {
     children: React.ReactNode;
     params: Promise<{ locale: Locale }>;
@@ -13,5 +15,11 @@ export declare global {
     created_at: string;
     updated_at: string;
     deleted_at: string | null;
+  }
+
+  declare module '*.svg' {
+    import React from 'react';
+    const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+    export default ReactComponent;
   }
 }
