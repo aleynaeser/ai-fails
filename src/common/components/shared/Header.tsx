@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header className='flex items-center justify-between px-10 py-8'>
+    <header className='fixed top-0 right-0 left-0 z-50 flex items-center justify-between px-10 py-8'>
       <Link href='/' className='flex-1'>
         <Image src='/images/ai-logo.png' alt='Logo' width={40} height={40} priority />
       </Link>

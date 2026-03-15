@@ -27,6 +27,7 @@
       "@styles/*": ["./src/common/styles/*"],
       "@hooks/*": ["./src/common/hooks/*"],
       "@constants/*": ["./src/common/constants/*"],
+      "@ui/*": ["./src/common/components/ui/*"],
       "@components/*": ["./src/common/components/*"],
       "@shared/*": ["./src/common/components/shared/*"],
       "@sections/*": ["./src/common/components/sections/*"],

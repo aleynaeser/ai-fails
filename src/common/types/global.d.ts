@@ -14,7 +14,21 @@ export declare global {
     id: string;
     created_at: string;
     updated_at: string;
-    deleted_at: string | null;
+  }
+
+  export interface IFailCategory {
+    id: string;
+    name: string;
+  }
+
+  export interface IFailItem {
+    id: string;
+    title: string;
+    description: string;
+    categories: IFailCategory[];
+    author: string;
+    date: string;
+    url: string;
   }
 
   declare module '*.svg' {
