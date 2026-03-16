@@ -22,7 +22,7 @@ export const IconButton = ({ className, content, href = '/', Icon, onClick }: Ic
   };
 
   const commonClasses = cn(
-    'group relative flex cursor-pointer bg-foreground text-secondary items-center justify-center p-5 overflow-hidden rounded-full font-medium',
+    'group relative flex  bg-foreground text-secondary items-center justify-center p-5 overflow-hidden rounded-full font-medium',
     className,
   );
 

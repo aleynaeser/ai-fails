@@ -10,15 +10,10 @@ type TSupabaseDoc<T> = Omit<T, 'id' | 'created_at' | 'updated_at' | 'deleted_at'
 export interface Database {
   public: {
     Tables: {
-      households: {
-        Row: IHousehold;
-        Insert: TSupabaseDoc<IHousehold>;
-        Update: Partial<IHousehold>;
-      };
-      users: {
-        Row: IUser;
-        Insert: TSupabaseDoc<IUser> & { role?: TUserRole };
-        Update: Partial<IUser>;
+      fails: {
+        Row: IFailItem;
+        Insert: TSupabaseDoc<IFailItem>;
+        Update: Partial<IFailItem>;
       };
     };
   };

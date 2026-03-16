@@ -1,41 +1,46 @@
-'use client';
+import Link from 'next/link';
+import { apiFetch } from '@lib/api/fetch';
 
-import { useMemo, useEffect } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { mockFails } from '@constants/mock-data';
-import { useThree, useFrame } from '@react-three/fiber';
-import { InfiniteGrid } from '@ui/GridView/InfiniteGrid';
-import { DistortionShader } from '@ui/GridView/DistortionShader';
-import { EffectComposer, RenderPass, ShaderPass } from 'three-stdlib';
+export default async function Home() {
+  const fails = await apiFetch<IFailItem[]>('/api/fails');
 
-const SceneEffects = () => {
-  const { gl, scene, camera, size } = useThree();
-
-  const composer = useMemo(() => {
-    const comp = new EffectComposer(gl);
-    comp.addPass(new RenderPass(scene, camera));
-    const distPass = new ShaderPass(DistortionShader);
-    // Başlangıç bükülme değeri (0.1 civarı idealdir)
-    distPass.uniforms.distortion.value.set(0.1, 0.1);
-    comp.addPass(distPass);
-    return comp;
-  }, [gl, scene, camera]);
-
-  useEffect(() => {
-    composer.setSize(size.width, size.height);
-  }, [composer, size]);
-
-  useFrame(() => composer.render(), 1);
-  return null;
-};
-
-export default function Home() {
   return (
-    <div className='bg-background h-screen w-full cursor-grab active:cursor-grabbing'>
-      <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
-        <color attach='background' args={['#000']} />
-        <InfiniteGrid data={mockFails} />
-      </Canvas>
-    </div>
+    <main className='bg-background text-foreground'>
+      <section className='border-stroke mt-28 border'>
+        <div className='grid grid-cols-4'>
+          {fails.map((item) => (
+            <Link
+              key={item.id}
+              href={item.url}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='border-stroke hover:bg-accent flex min-h-44 flex-col justify-between border-r border-b px-6 py-5 last:border-r-0'
+            >
+              <div>
+                <p className='text-neutral mb-2 text-xs tracking-[0.16em]'>{item.author}</p>
+
+                <p className='text-primary mb-2 text-lg/tight font-bold tracking-[0.18em] uppercase italic'>
+                  <strong>&quot;{item.title}&quot;</strong>
+                </p>
+
+                <p className='text-secondary line-clamp-2 text-xs/relaxed'>{item.description}</p>
+              </div>
+
+              <footer className='mt-8 flex items-center justify-between'>
+                <div className='flex items-center gap-2 text-xs uppercase'>
+                  {item.categories.map((c) => (
+                    <div key={c.id} className='bg-accent text-secondary rounded-full px-3 py-1'>
+                      {c.name}
+                    </div>
+                  ))}
+                </div>
+
+                <p className='text-secondary text-xs tracking-[0.16em]'>{item.date}</p>
+              </footer>
+            </Link>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }
