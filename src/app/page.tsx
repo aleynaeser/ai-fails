@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { createClient } from '@lib/supabase/server';
-import { getFails } from '@lib/supabase/fails';
+import { getFails } from '@lib/supabase/queries/fails';
 
 export default async function Home() {
   const supabase = await createClient();

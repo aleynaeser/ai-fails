@@ -1,15 +1,15 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@lib/supabase/server';
-import { createFail, getFails, type TCreateFailPayload } from '@lib/supabase/queries/fails';
+import { createCategory, getCategories, type TCreateCategoryPayload } from '@lib/supabase/queries/categories';
 
 export async function GET() {
   try {
     const supabase = await createClient();
-    const data = await getFails(supabase);
+    const data = await getCategories(supabase);
 
     return NextResponse.json(data);
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Failed to load fails';
+    const message = error instanceof Error ? error.message : 'Failed to load categories';
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
@@ -17,13 +17,12 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const supabase = await createClient();
-    const body = (await request.json()) as TCreateFailPayload;
-    const data = await createFail(supabase, body);
+    const body = (await request.json()) as TCreateCategoryPayload;
+    const data = await createCategory(supabase, body);
 
     return NextResponse.json(data);
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Failed to create fail';
+    const message = error instanceof Error ? error.message : 'Failed to create category';
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
-

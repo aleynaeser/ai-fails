@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { IconButton } from '@components/ui/IconButton';
 import { AddFailModal } from '@ui/AddFailModal';
 
-export default function Header() {
+export default function Header({ categories }: { categories: IFailCategory[] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -45,7 +45,7 @@ export default function Header() {
         </div>
       </header>
 
-      <AddFailModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <AddFailModal open={isModalOpen} categories={categories} onClose={() => setIsModalOpen(false)} />
     </>
   );
 }

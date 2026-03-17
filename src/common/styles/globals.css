@@ -7,8 +7,8 @@
   --foreground: #ffffff;
 
   --primary: #fff;
-  --secondary: #565656;
-  --neutral: #797979;
+  --secondary: #9e9d9d;
+  --neutral: #4b4b4b;
   --accent: #0f0f0f;
   --error: #ff0000;
   --stroke: #1c1b1b;
@@ -59,5 +59,14 @@
 
   .dot-opacity-pulse {
     animation: dotOpacityPulse 2s ease-in-out infinite;
+  }
+
+  .hidden-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .hidden-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }

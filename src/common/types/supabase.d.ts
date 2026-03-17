@@ -10,6 +10,11 @@ type TSupabaseDoc<T> = Omit<T, 'id' | 'created_at' | 'updated_at' | 'deleted_at'
 export interface Database {
   public: {
     Tables: {
+      categories: {
+        Row: IFailCategory;
+        Insert: TSupabaseDoc<IFailCategory>;
+        Update: Partial<IFailCategory>;
+      };
       fails: {
         Row: IFailItem;
         Insert: TSupabaseDoc<IFailItem>;

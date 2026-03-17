@@ -3,6 +3,10 @@ import * as motion from 'motion/react-client';
 import Header from '@components/shared/Header';
 import { Anonymous_Pro } from 'next/font/google';
 import { QueryProvider } from '@/common/providers/QueryProvider';
+import { createClient } from '@lib/supabase/server';
+import { getFails } from '@lib/supabase/queries/fails';
+import { getFailCategories } from '@lib/supabase/queries/categories';
+
 import '@styles/globals.css';
 
 export const anonymousPro = Anonymous_Pro({
@@ -20,6 +24,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
+  const supabase = await createClient();
+  const categories = await getFailCategories(supabase);
+
   return (
     <html lang='en'>
       <head>
@@ -45,7 +52,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
         className={`${anonymousPro.className} bg-background relative h-full antialiased`}
       >
         <QueryProvider>
-          <Header />
+          <Header categories={categories} />
           {children}
         </QueryProvider>
       </motion.body>

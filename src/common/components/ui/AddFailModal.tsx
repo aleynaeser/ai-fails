@@ -6,10 +6,11 @@ import { AddFailForm } from '@components/shared/AddFailForm';
 
 interface IAddFailModalProps {
   open: boolean;
+  categories: IFailCategory[];
   onClose: () => void;
 }
 
-export function AddFailModal({ open, onClose }: IAddFailModalProps) {
+export function AddFailModal({ open, categories, onClose }: IAddFailModalProps) {
   useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden';
@@ -18,5 +19,5 @@ export function AddFailModal({ open, onClose }: IAddFailModalProps) {
     }
   }, [open]);
 
-  return <AnimatePresence mode='wait'>{open && <AddFailForm open={open} onClose={onClose} />}</AnimatePresence>;
+  return <AnimatePresence mode='wait'>{open && <AddFailForm open={open} categories={categories} onClose={onClose} />}</AnimatePresence>;
 }

@@ -19,6 +19,7 @@ export declare global {
   export interface IFailCategory {
     id: string;
     name: string;
+    created_at?: string;
   }
 
   export interface IFailItem {
