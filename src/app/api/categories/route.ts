@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@lib/supabase/server';
-import { createCategory, getCategories, type TCreateCategoryPayload } from '@lib/supabase/queries/categories';
+import { createCategory, getCategories, type TCreateFailCategoryPayload } from '@lib/supabase/queries/categories';
 
 export async function GET() {
   try {
@@ -17,7 +17,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const supabase = await createClient();
-    const body = (await request.json()) as TCreateCategoryPayload;
+    const body = (await request.json()) as TCreateFailCategoryPayload;
     const data = await createCategory(supabase, body);
 
     return NextResponse.json(data);
