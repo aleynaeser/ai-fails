@@ -20,23 +20,17 @@ export function AddFailForm({ open, onClose }: IAddFailFormProps) {
     register,
     watch,
     setValue,
-    getValues,
+    handleSubmit,
     reset,
     formState: { errors },
   } = useForm<TFailFormValues>({
-    mode: 'onTouched',
+    mode: 'all',
     resolver: zodResolver(failFormSchema),
     defaultValues: {
-      title: '',
-      description: '',
-      categoryIds: [],
-      author: '',
-      url: '',
       date: new Date().toISOString().slice(0, 10),
     },
   });
 
-  const values = getValues();
   const selectedCategoryIds = watch('categoryIds');
 
   const toggleCategory = (id: string) => {
@@ -44,8 +38,6 @@ export function AddFailForm({ open, onClose }: IAddFailFormProps) {
     const next = current.includes(id) ? current.filter((c) => c !== id) : [...current, id];
     setValue('categoryIds', next, { shouldValidate: true });
   };
-
-  console.log('f');
 
   const createFailMutation = useMutation({
     mutationFn: (values: TFailFormValues) =>
@@ -75,7 +67,7 @@ export function AddFailForm({ open, onClose }: IAddFailFormProps) {
       exit={{ opacity: 0, y: 10 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
     >
-      <div className='mx-auto flex h-fit max-h-[90vh] max-w-5xl flex-col overflow-y-auto hidden-scrollbar px-10 py-16'>
+      <div className='hidden-scrollbar mx-auto flex h-fit max-h-[90vh] max-w-5xl flex-col overflow-y-auto px-10 py-16'>
         <div className='flex items-center justify-between'>
           <div className='space-y-4'>
             <p className='text-neutral text-xs tracking-[0.2em] uppercase'>AI Fails</p>
@@ -93,7 +85,10 @@ export function AddFailForm({ open, onClose }: IAddFailFormProps) {
           </button>
         </div>
 
-        <form onSubmit={() => createFailMutation.mutate(values)} className='mt-10 flex flex-col gap-8'>
+        <form
+          onSubmit={handleSubmit((values) => createFailMutation.mutate(values))}
+          className='mt-10 flex flex-col gap-8'
+        >
           {/* TITLE */}
           <div className='space-y-2'>
             <label

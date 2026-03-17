@@ -6,7 +6,7 @@ export default async function Home() {
 
   return (
     <main className='bg-background text-foreground'>
-      <section className='border-stroke mt-28 border'>
+      <section className='border-stroke mt-28 border-[0.5px]'>
         <div className='grid grid-cols-4'>
           {fails.map((item) => (
             <Link
@@ -14,7 +14,7 @@ export default async function Home() {
               href={item.url}
               target='_blank'
               rel='noopener noreferrer'
-              className='border-stroke hover:bg-accent flex min-h-44 flex-col justify-between border-r border-b px-6 py-5 last:border-r-0'
+              className='border-stroke hover:bg-accent flex min-h-44 flex-col justify-between border-[0.5px] px-6 py-5'
             >
               <div>
                 <p className='text-neutral mb-2 text-xs tracking-[0.16em]'>{item.author}</p>
