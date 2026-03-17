@@ -1,42 +1,43 @@
 export const failCategories: IFailCategory[] = [
   {
+    //make english
     id: '1',
-    name: 'Etik İhlali',
+    name: 'Ethical Violation',
   },
   {
     id: '2',
-    name: 'Hatalı İşlem',
+    name: 'Faulty Operation',
   },
   {
     id: '3',
-    name: 'Güvenlik Açığı',
+    name: 'Security Vulnerability',
   },
   {
     id: '4',
-    name: 'Sistemsel Hata',
+    name: 'Systematic Error',
   },
   {
     id: '5',
-    name: 'Veri Bozulması',
+    name: 'Data Corruption',
   },
   {
     id: '6',
-    name: 'Güvenlik Açığı',
+    name: 'Security Vulnerability',
   },
   {
     id: '7',
-    name: 'İşlem Hataları',
+    name: 'Operation Errors',
   },
   {
     id: '8',
-    name: 'Kullanıcı Hataları',
+    name: 'User Errors',
   },
   {
     id: '9',
-    name: 'İstek Dışı İşlem',
+    name: 'Request-Oriented Operation',
   },
   {
     id: '10',
-    name: 'Diğer',
+    name: 'Other',
   },
 ];
