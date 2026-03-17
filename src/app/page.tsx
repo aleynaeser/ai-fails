@@ -1,8 +1,10 @@
 import Link from 'next/link';
-import { apiFetch } from '@lib/api/fetch';
+import { createClient } from '@lib/supabase/server';
+import { getFails } from '@lib/supabase/fails';
 
 export default async function Home() {
-  const fails = await apiFetch<IFailItem[]>('/api/fails');
+  const supabase = await createClient();
+  const fails = await getFails(supabase);
 
   return (
     <main className='bg-background text-foreground'>
