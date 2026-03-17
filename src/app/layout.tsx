@@ -42,7 +42,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
           scale: { type: 'spring', visualDuration: 0.5, bounce: 0.5 },
         }}
         cz-shortcut-listen='true'
-        className={`${anonymousPro.className} bg-background relative h-full min-h-screen antialiased`}
+        className={`${anonymousPro.className} bg-background relative h-full antialiased`}
       >
         <QueryProvider>
           <Header />
