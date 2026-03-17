@@ -4,6 +4,7 @@ import { cn } from '@lib/utils';
 import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { apiFetch } from '@lib/api/fetch';
+import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -18,6 +19,7 @@ interface IAddFailFormProps {
 }
 
 export function AddFailForm({ open, categories, onClose }: IAddFailFormProps) {
+ const router = useRouter();
   const {
     register,
     control,
@@ -68,6 +70,7 @@ export function AddFailForm({ open, categories, onClose }: IAddFailFormProps) {
         date: new Date().toISOString().slice(0, 10),
       });
       onClose();
+      router.refresh();
     },
   });
 
