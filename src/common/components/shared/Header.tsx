@@ -49,7 +49,7 @@ export default function Header({ categories }: { categories: IFailCategory[] }) 
         <div className='flex w-full items-center justify-between gap-16 text-xs font-bold lg:hidden'>
           <h1>AI FAILS</h1>
 
-          <p className='max-w-82 line-clamp-4'>
+          <p className='max-w-82 line-clamp-3 md:line-clamp-4'>
             A REPOSITORY OF ETHICAL
             <br /> LAPSES AND SYSTEM VIOLATIONS.
             <br /> CONTRIBUTE TO THE ARCHIVE.
