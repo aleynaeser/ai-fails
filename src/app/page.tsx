@@ -7,9 +7,9 @@ export default async function Home() {
   const fails = await getFails(supabase);
 
   return (
-    <main className='bg-background text-foreground'>
-      <section className='border-stroke mt-28 border-[0.5px]'>
-        <div className='grid grid-cols-4'>
+    <main className='bg-background text-foreground px-1 md:px-0'>
+      <section className='border-stroke mt-44 border-[0.5px] md:mt-30'>
+        <div className='grid grid-cols-1 md:grid-cols-4 md:px-0'>
           {fails.map((item) => (
             <Link
               key={item.id}

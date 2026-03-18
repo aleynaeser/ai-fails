@@ -19,7 +19,7 @@ interface IAddFailFormProps {
 }
 
 export function AddFailForm({ open, categories, onClose }: IAddFailFormProps) {
- const router = useRouter();
+  const router = useRouter();
   const {
     register,
     control,
@@ -137,8 +137,8 @@ export function AddFailForm({ open, categories, onClose }: IAddFailFormProps) {
       exit={{ opacity: 0, y: 10 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
     >
-      <div className='hidden-scrollbar mx-auto flex h-fit max-h-[90vh] w-full max-w-5xl flex-col overflow-y-auto'>
-        <div className='flex items-center justify-between'>
+      <div className='hidden-scrollbar mx-auto flex h-fit max-h-[90vh] w-full max-w-5xl flex-col overflow-y-auto px-4 md:px-0'>
+        <div className='flex items-center justify-between gap-4'>
           <div className='space-y-4'>
             <p className='text-secondary text-xs tracking-[0.2em] uppercase'>AI Fails</p>
             <h2 className='text-primary text-4xl font-bold tracking-[0.06em]'>
@@ -149,7 +149,7 @@ export function AddFailForm({ open, categories, onClose }: IAddFailFormProps) {
           <button
             type='button'
             onClick={onClose}
-            className='text-secondary border-stroke hover:bg-accent flex h-12 w-12 items-center justify-center rounded-full border text-xl'
+            className='text-secondary border-stroke hover:bg-accent flex h-12 w-12 items-center justify-center self-end rounded-full border text-xl md:self-auto'
           >
             ✕
           </button>
@@ -261,7 +261,7 @@ export function AddFailForm({ open, categories, onClose }: IAddFailFormProps) {
             {errors.category && <p className='text-error p-2 text-xs'>{errors.category.message}</p>}
           </div>
 
-          <div className='grid grid-cols-3 gap-6'>
+          <div className='grid grid-cols-1 gap-6 md:grid-cols-3'>
             <div className='space-y-2'>
               <label
                 htmlFor='author'
