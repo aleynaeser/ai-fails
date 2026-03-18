@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import * as motion from 'motion/react-client';
 import Header from '@components/shared/Header';
 import { Anonymous_Pro } from 'next/font/google';
-import { QueryProvider } from '@/common/providers/QueryProvider';
 import { createClient } from '@lib/supabase/server';
-import { getFails } from '@lib/supabase/queries/fails';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { QueryProvider } from '@/common/providers/QueryProvider';
 import { getFailCategories } from '@lib/supabase/queries/categories';
 
 import '@styles/globals.css';
@@ -54,6 +54,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
         <QueryProvider>
           <Header categories={categories} />
           {children}
+          <SpeedInsights />
         </QueryProvider>
       </motion.body>
     </html>
