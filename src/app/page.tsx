@@ -21,7 +21,7 @@ export default async function Home() {
               <div>
                 <p className='text-secondary mb-2 text-xs'>{item.author}</p>
 
-                <p className='text-primary mb-2 text-lg/tight font-bold tracking-wider uppercase italic'>
+                <p className='text-primary mb-2 text-lg/tight font-bold tracking-wider uppercase'>
                   <strong>&quot;{item.title}&quot;</strong>
                 </p>
 
