@@ -3,15 +3,15 @@
 :root {
   --text-xs: 10px;
   --text-sm: 12px;
-  --background: #000000;
+  --background: #141414;
   --foreground: #ffffff;
 
   --primary: #fff;
-  --secondary: #9e9d9d;
-  --neutral: #4b4b4b;
-  --accent: #0f0f0f;
+  --secondary: #c4c3c3;
+  --neutral: #666666;
+  --accent: #1a1a1a;
   --error: #ff0000;
-  --stroke: #1c1b1b;
+  --stroke: #272626;
 }
 
 @theme inline {
@@ -29,6 +29,7 @@
   --color-stroke: var(--stroke);
 
   --font-anonymous-pro: var(--font-anonymous-pro);
+  --font-nunito-sans: var(--font-nunito-sans);
 }
 
 @layer base {

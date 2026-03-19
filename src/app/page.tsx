@@ -16,12 +16,12 @@ export default async function Home() {
               href={item.url}
               target='_blank'
               rel='noopener noreferrer'
-              className='border-stroke hover:bg-accent flex min-h-44 flex-col justify-between border-[0.5px] px-6 py-5'
+              className='border-stroke hover:bg-accent/50 font-nunito-sans flex min-h-44 flex-col justify-between border-[0.5px] px-6 py-5'
             >
               <div>
-                <p className='text-secondary mb-2 text-xs tracking-[0.16em]'>{item.author}</p>
+                <p className='text-secondary mb-2 text-xs'>{item.author}</p>
 
-                <p className='text-primary mb-2 text-lg/tight font-bold tracking-[0.18em] uppercase italic'>
+                <p className='text-primary mb-2 text-lg/tight font-bold tracking-wider uppercase italic'>
                   <strong>&quot;{item.title}&quot;</strong>
                 </p>
 
@@ -29,7 +29,7 @@ export default async function Home() {
               </div>
 
               <footer className='mt-8 flex items-center justify-between'>
-                <div className='flex items-center gap-2 text-xs uppercase'>
+                <div className='flex flex-wrap items-center gap-2 text-xs uppercase'>
                   {item.categories.map((c) => (
                     <div key={c.id} className='bg-accent text-neutral rounded-full px-3 py-1'>
                       {c.name}
@@ -37,7 +37,7 @@ export default async function Home() {
                   ))}
                 </div>
 
-                <p className='text-secondary text-xs tracking-[0.16em]'>{item.date}</p>
+                <p className='text-secondary text-xs'>{item.date}</p>
               </footer>
             </Link>
           ))}

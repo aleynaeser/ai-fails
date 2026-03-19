@@ -1,16 +1,25 @@
 import { Metadata } from 'next';
 import * as motion from 'motion/react-client';
 import Header from '@components/shared/Header';
-import { Anonymous_Pro } from 'next/font/google';
 import { createClient } from '@lib/supabase/server';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Anonymous_Pro, Nunito_Sans } from 'next/font/google';
 import { QueryProvider } from '@/common/providers/QueryProvider';
 import { getFailCategories } from '@lib/supabase/queries/categories';
 
 import '@styles/globals.css';
 
+export const nunitoSans = Nunito_Sans({
+  display: 'swap',
+  variable: '--font-nunito-sans',
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin', 'latin-ext'],
+});
+
 export const anonymousPro = Anonymous_Pro({
   display: 'swap',
+  variable: '--font-anonymous-pro',
   weight: ['400', '700'],
   style: ['normal', 'italic'],
   subsets: ['latin', 'latin-ext'],
@@ -24,6 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
+  const fontClasses = `${nunitoSans.variable} ${anonymousPro.variable}`;
   const supabase = await createClient();
   const categories = await getFailCategories(supabase);
 
@@ -49,7 +59,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
           scale: { type: 'spring', visualDuration: 0.5, bounce: 0.5 },
         }}
         cz-shortcut-listen='true'
-        className={`${anonymousPro.className} bg-background relative h-full antialiased`}
+        className={`${fontClasses} bg-background relative h-full antialiased`}
       >
         <QueryProvider>
           <Header categories={categories} />

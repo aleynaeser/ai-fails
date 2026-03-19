@@ -131,7 +131,7 @@ export function AddFailForm({ open, categories, onClose }: IAddFailFormProps) {
 
   return (
     <motion.div
-      className='bg-background/50 fixed inset-0 z-50 flex items-center justify-center backdrop-blur-2xl'
+      className='bg-background/60 fixed inset-0 z-50 flex items-center justify-center backdrop-blur-xl'
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 10 }}
@@ -166,12 +166,9 @@ export function AddFailForm({ open, categories, onClose }: IAddFailFormProps) {
             </label>
 
             <div
-              className={cn(
-                'text-foreground border-stroke bg-primary/3 h-16 w-full rounded-2xl border px-6 text-sm shadow-[0_0_40px_rgba(0,0,0,0.7)]',
-                {
-                  'border-error': errors.title,
-                },
-              )}
+              className={cn('text-foreground border-stroke bg-primary/3 h-16 w-full rounded-2xl border px-6 text-sm', {
+                'border-error': errors.title,
+              })}
             >
               <input
                 id='title'
@@ -194,12 +191,9 @@ export function AddFailForm({ open, categories, onClose }: IAddFailFormProps) {
             </label>
 
             <div
-              className={cn(
-                'text-foreground border-stroke bg-primary/3 h-24 w-full rounded-2xl border p-6 text-sm shadow-[0_0_40px_rgba(0,0,0,0.7)]',
-                {
-                  'border-error': errors.description,
-                },
-              )}
+              className={cn('text-foreground border-stroke bg-primary/3 h-24 w-full rounded-2xl border p-6 text-sm', {
+                'border-error': errors.description,
+              })}
             >
               <textarea
                 id='description'
@@ -223,24 +217,26 @@ export function AddFailForm({ open, categories, onClose }: IAddFailFormProps) {
             </label>
 
             <div
-              className={cn(
-                'text-foreground border-stroke bg-primary/3 h-14 w-full rounded-2xl border px-5 text-sm shadow-[0_0_40px_rgba(0,0,0,0.7)]',
-                {
-                  'border-error': errors.category,
-                },
-              )}
+              className={cn('text-foreground border-stroke bg-primary/3 h-14 w-full rounded-2xl border px-5 text-sm', {
+                'border-error': errors.category,
+              })}
             >
               <input
                 id='category'
                 {...register('category')}
-                className='placeholder:text-neutral h-full w-full bg-transparent outline-none'
+                className={cn('placeholder:text-neutral h-full w-full bg-transparent outline-none', {
+                  'cursor-not-allowed opacity-50': selectedCategories.length >= 2,
+                })}
                 placeholder='Write a category or pick below'
+                disabled={selectedCategories.length >= 2}
+                maxLength={30}
               />
             </div>
 
             <div className='flex flex-wrap gap-2'>
               {categories.map((category) => {
                 const isActive = selectedCategories?.some((item) => item.id === category.id);
+                const isDisabled = selectedCategories.length >= 2 && !isActive;
 
                 return (
                   <button
@@ -250,7 +246,9 @@ export function AddFailForm({ open, categories, onClose }: IAddFailFormProps) {
                     className={cn('rounded-full border px-3 py-1 text-xs tracking-[0.14em] uppercase', {
                       'bg-primary text-background border-primary hover:bg-primary/90': isActive,
                       'text-secondary border-stroke hover:bg-secondary/20': !isActive,
+                      'cursor-not-allowed opacity-50': isDisabled,
                     })}
+                    disabled={isDisabled}
                   >
                     {category.name}
                   </button>
@@ -272,12 +270,9 @@ export function AddFailForm({ open, categories, onClose }: IAddFailFormProps) {
               </label>
 
               <div
-                className={cn(
-                  'text-foreground border-stroke bg-primary/3 h-16 w-full rounded-2xl border px-6 text-sm shadow-[0_0_40px_rgba(0,0,0,0.7)]',
-                  {
-                    'border-error': errors.author,
-                  },
-                )}
+                className={cn('text-foreground border-stroke bg-primary/3 h-16 w-full rounded-2xl border px-6 text-sm', {
+                  'border-error': errors.author,
+                })}
               >
                 <input
                   id='author'
@@ -299,12 +294,9 @@ export function AddFailForm({ open, categories, onClose }: IAddFailFormProps) {
               </label>
 
               <div
-                className={cn(
-                  'text-foreground border-stroke bg-primary/3 h-16 w-full rounded-2xl border px-6 text-sm shadow-[0_0_40px_rgba(0,0,0,0.7)]',
-                  {
-                    'border-error': errors.url,
-                  },
-                )}
+                className={cn('text-foreground border-stroke bg-primary/3 h-16 w-full rounded-2xl border px-6 text-sm', {
+                  'border-error': errors.url,
+                })}
               >
                 <input
                   id='url'
@@ -326,12 +318,9 @@ export function AddFailForm({ open, categories, onClose }: IAddFailFormProps) {
               </label>
 
               <div
-                className={cn(
-                  'text-foreground border-stroke bg-primary/3 h-16 w-full rounded-2xl border px-6 text-sm shadow-[0_0_40px_rgba(0,0,0,0.7)]',
-                  {
-                    'border-error': errors.date,
-                  },
-                )}
+                className={cn('text-foreground border-stroke bg-primary/3 h-16 w-full rounded-2xl border px-6 text-sm', {
+                  'border-error': errors.date,
+                })}
               >
                 <input
                   id='date'
