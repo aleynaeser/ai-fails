@@ -1,4 +1,5 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
+import { MOCK_FAILS } from './mock-data';
 
 export type TCreateFailPayload = {
   title: string;
@@ -10,13 +11,24 @@ export type TCreateFailPayload = {
 };
 
 export async function getFails(supabase: SupabaseClient): Promise<IFailItem[]> {
-  const { data, error } = await supabase.from('fails').select('*').order('created_at', { ascending: false });
+  try {
+    const { data, error } = await supabase.from('fails').select('*').order('created_at', { ascending: false });
 
-  if (error) {
-    throw new Error(error.message);
+    if (error) {
+      console.warn('[getFails] Supabase error, falling back to mock data:', error.message);
+      return MOCK_FAILS;
+    }
+
+    if (!data || data.length === 0) {
+      console.warn('[getFails] No data from Supabase, falling back to mock data');
+      return MOCK_FAILS;
+    }
+
+    return data as IFailItem[];
+  } catch (err) {
+    console.warn('[getFails] Supabase unreachable, falling back to mock data:', err);
+    return MOCK_FAILS;
   }
-
-  return (data ?? []) as IFailItem[];
 }
 
 export async function createFail(supabase: SupabaseClient, body: TCreateFailPayload): Promise<IFailItem> {
