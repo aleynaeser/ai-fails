@@ -74,8 +74,7 @@ const RAW_FAILS = [
  * categories alanı DB'de JSON string olarak saklanıyor — parse edip IFailItem formatına çeviriyoruz.
  */
 function parseFail(raw: (typeof RAW_FAILS)[number]): IFailItem {
-  const categories: IFailCategory[] =
-    typeof raw.categories === 'string' ? JSON.parse(raw.categories) : raw.categories;
+  const categories: IFailCategory[] = JSON.parse(raw.categories);
 
   return {
     id: raw.id,
