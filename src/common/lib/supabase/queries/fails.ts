@@ -1,5 +1,5 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
-import { MOCK_FAILS } from './mock-data';
+import { MOCK_FAILS } from '../mock-data';
 
 export type TCreateFailPayload = {
   title: string;
