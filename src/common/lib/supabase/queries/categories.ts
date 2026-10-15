@@ -1,5 +1,5 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
-import { MOCK_CATEGORIES } from './mock-data';
+import { MOCK_CATEGORIES } from '../mock-data';
 
 export type TCreateFailCategoryPayload = {
   name: string;
